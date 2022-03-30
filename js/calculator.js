@@ -72,8 +72,11 @@ const clickNumberButton = function() {
 }
 clickNumberButton(); 
 
+let displayValue = [];
 
 let display = function(number) {
     const display = document.querySelector('.display');
-    display.textContent = number;
+    displayValue.push(number); 
+    display.textContent = displayValue.join('');
 }
+
