@@ -80,3 +80,18 @@ let display = function(number) {
     display.textContent = displayValue.join('');
 }
 
+const clickClearButton = function() {
+    const display = document.querySelector('.display');
+    const clearButton = document.querySelector('.clear')
+    clearButton.addEventListener('click', () => {
+        display.textContent = 0;
+        return displayValue = []
+    });
+}
+clickClearButton();
+
+const defaultZero = function() {
+    const display = document.querySelector('.display');
+    return display.textContent = 0;
+}
+defaultZero();
