@@ -108,6 +108,24 @@ const clickOperatorButton = function () {
         changeChosenOperator(add);
         return displayValue = [];
     });
+    const subtractButton = document.querySelector('.subtract');
+    subtractButton.addEventListener('click', () => {
+        displayValue.forEach(element => firstValue.push(element));
+        changeChosenOperator(subtract);
+        return displayValue = [];
+    });
+    const multiplyButton = document.querySelector('.multiply');
+    multiplyButton.addEventListener('click', () => {
+        displayValue.forEach(element => firstValue.push(element));
+        changeChosenOperator(multiply);
+        return displayValue = [];
+    });
+    const divideButton = document.querySelector('.divide');
+    divideButton.addEventListener('click', () => {
+        displayValue.forEach(element => firstValue.push(element));
+        changeChosenOperator(divide);
+        return displayValue = [];
+    });
 }
 clickOperatorButton();
 
