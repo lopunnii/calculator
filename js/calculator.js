@@ -18,6 +18,7 @@ const operate = function (operator, num1, num2) {
      return operator(num1, num2); 
 }
 
+
 const clickNumberButton = function() {
     const zeroButton = document.querySelector('.zero');
     zeroButton.addEventListener('click', () => {
@@ -85,7 +86,7 @@ const clickClearButton = function() {
     const clearButton = document.querySelector('.clear')
     clearButton.addEventListener('click', () => {
         display.textContent = 0;
-        return displayValue = []
+        return displayValue = [];
     });
 }
 clickClearButton();
@@ -95,3 +96,14 @@ const defaultZero = function() {
     return display.textContent = 0;
 }
 defaultZero();
+
+let firstValue = []; 
+
+const clickOperatorButton = function () {
+    const addButton = document.querySelector('.add');
+    addButton.addEventListener('click', () => {
+        displayValue.forEach(element => firstValue.push(element));
+        return displayValue = [];
+    });
+}
+clickOperatorButton();
