@@ -1,9 +1,103 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.calculator-container {
+    border: solid black 3px;
+    border-radius: 25px;
+    height: 600px;
+    width: 400px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+}
+
 .display {
     border: solid black 1px;
-    height: 30px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 70px;
+    box-shadow: 2px 2px #404040;
+    color:darkslategrey;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 80px;
+    width: 320px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons {
+    width: 340px;
+}
+
+.first-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.third-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fourth-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fifth-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+button {
+    font-size: 70px;
+    color: #404040;
+    border-radius: 5px;
+    cursor: pointer; 
+}
+
+button:hover {
+    transition: 0.1s;
+    filter: brightness(90%); 
+}
+
+
+.first-row button {
+    width: 170px;
+}
+
+.second-row button,
+.third-row button,
+.fourth-row button,
+.fifth-row button {
     width: 150px;
 }
 
-button {
-    font-size: 20px;
+.clear, 
+.backspace {
+    background-color: lightcoral;
 }
+
+.divide,
+.multiply,
+.subtract,
+.add {
+    background-color: lightskyblue;
+}
+
+.equal {
+    background-color: lightpink;
+}
+
