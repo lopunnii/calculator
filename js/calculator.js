@@ -21,6 +21,11 @@ const operate = function (operator, num1, num2) {
     num2 = Number(secondValue.join(''));
     return parseFloat(operator(num1, num2).toFixed(6)); 
 }
+//Values
+
+let displayValue = [];
+let firstValue = []; 
+let secondValue = []; 
 
 //Number Buttons
 
@@ -79,15 +84,23 @@ const clickNumberButton = function() {
     decimalButton.addEventListener('click', () => {
         const decimal = '.';
         display(decimal);
+        disableDecimal();
     });
+    
 }
 clickNumberButton(); 
 
-//Values
+//Decimals 
 
-let displayValue = [];
-let firstValue = []; 
-let secondValue = []; 
+const disableDecimal = function () {
+    if (displayValue.includes('.')) {
+        document.querySelector('.decimal').disabled = true; 
+    }
+}
+
+const enableDecimal = function () {
+    document.querySelector('.decimal').disabled = false;
+}
 
 //Display 
 
@@ -112,6 +125,7 @@ const clickClearButton = function() {
         display.textContent = 0;
         resetFirstValue();
         resetSecondValue();
+        enableDecimal();
         return displayValue = [];
     });
 }
@@ -124,6 +138,7 @@ let chosenOperator = 0;
 const clickOperatorButton = function () {
     const addButton = document.querySelector('.add');
     addButton.addEventListener('click', () => {
+        enableDecimal();
         if (!firstValue.length) {
             displayValue.forEach(element => firstValue.push(element));    
         } else {
@@ -136,6 +151,7 @@ const clickOperatorButton = function () {
     });
     const subtractButton = document.querySelector('.subtract');
     subtractButton.addEventListener('click', () => {
+        enableDecimal();
         if (!firstValue.length) {
             displayValue.forEach(element => firstValue.push(element));    
         } else {
@@ -148,6 +164,7 @@ const clickOperatorButton = function () {
     });
     const multiplyButton = document.querySelector('.multiply');
     multiplyButton.addEventListener('click', () => {
+        enableDecimal();
         if (!firstValue.length) {
             displayValue.forEach(element => firstValue.push(element));    
         } else {
@@ -160,6 +177,7 @@ const clickOperatorButton = function () {
     });
     const divideButton = document.querySelector('.divide');
     divideButton.addEventListener('click', () => {
+        enableDecimal();
         if (!firstValue.length) {
             displayValue.forEach(element => firstValue.push(element));    
         } else {
@@ -183,6 +201,7 @@ const clickEqualButton = function () {
     const display = document.querySelector('.display');
     const equalButton = document.querySelector('.equal');
     equalButton.addEventListener('click', () => {
+        enableDecimal();
         displayValue.forEach(element => secondValue.push(element));
         display.textContent = operate(chosenOperator, firstValue, secondValue);
         resetFirstValue();
