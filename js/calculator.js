@@ -19,7 +19,7 @@ const divide = function (num1, num2) {
 const operate = function (operator, num1, num2) {
     num1 = Number(firstValue.join(''));
     num2 = Number(secondValue.join(''));
-    return operator(num1, num2); 
+    return parseFloat(operator(num1, num2).toFixed(6)); 
 }
 
 //Number Buttons
