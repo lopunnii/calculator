@@ -75,6 +75,11 @@ const clickNumberButton = function() {
         const nine = 9;
         display(nine);
     });
+    const decimalButton = document.querySelector('.decimal');
+    decimalButton.addEventListener('click', () => {
+        const decimal = '.';
+        display(decimal);
+    });
 }
 clickNumberButton(); 
 
@@ -208,3 +213,14 @@ const resetFirstValue = function () {
 const resetSecondValue = function () {
     return secondValue = [];
 }
+
+//Keyboard Support
+
+/*const keyboardSupport = function () {
+    window.addEventListener("keydown", function(event) {
+        if (event.key === 1){
+            document.querySelector('.one').click();
+        }
+    })
+}
+keyboardSupport();*/
