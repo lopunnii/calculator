@@ -1,3 +1,5 @@
+//Basic Operator Functions
+
 const add = function (num1, num2) {
     return num1 + num2;
 }
@@ -15,8 +17,12 @@ const divide = function (num1, num2) {
 }
 
 const operate = function (operator, num1, num2) {
-     return operator(num1, num2); 
+    num1 = Number(firstValue.join(''));
+    num2 = Number(secondValue.join(''));
+    return operator(num1, num2); 
 }
+
+//Number Buttons
 
 const clickNumberButton = function() {
     const zeroButton = document.querySelector('.zero');
@@ -72,13 +78,27 @@ const clickNumberButton = function() {
 }
 clickNumberButton(); 
 
+//Values
+
 let displayValue = [];
+let firstValue = []; 
+let secondValue = []; 
+
+//Display 
 
 let display = function(number) {
     const display = document.querySelector('.display');
     displayValue.push(number); 
     display.textContent = displayValue.join('');
 }
+
+const defaultZero = function() {
+    const display = document.querySelector('.display');
+    return display.textContent = 0;
+}
+defaultZero();
+
+//Clear Button
 
 const clickClearButton = function() {
     const display = document.querySelector('.display');
@@ -92,37 +112,56 @@ const clickClearButton = function() {
 }
 clickClearButton();
 
-const defaultZero = function() {
-    const display = document.querySelector('.display');
-    return display.textContent = 0;
-}
-defaultZero();
+//Operator Buttons
 
-let firstValue = []; 
 let chosenOperator = 0;
 
 const clickOperatorButton = function () {
     const addButton = document.querySelector('.add');
     addButton.addEventListener('click', () => {
-        displayValue.forEach(element => firstValue.push(element));
+        if (!firstValue.length) {
+            displayValue.forEach(element => firstValue.push(element));    
+        } else {
+            displayValue.forEach(element => secondValue.push(element));
+            displayValue = [];
+            operateValue();
+        }
         changeChosenOperator(add);
         return displayValue = [];
     });
     const subtractButton = document.querySelector('.subtract');
     subtractButton.addEventListener('click', () => {
-        displayValue.forEach(element => firstValue.push(element));
+        if (!firstValue.length) {
+            displayValue.forEach(element => firstValue.push(element));    
+        } else {
+            displayValue.forEach(element => secondValue.push(element));
+            displayValue = [];
+            operateValue();
+        }
         changeChosenOperator(subtract);
         return displayValue = [];
     });
     const multiplyButton = document.querySelector('.multiply');
     multiplyButton.addEventListener('click', () => {
-        displayValue.forEach(element => firstValue.push(element));
+        if (!firstValue.length) {
+            displayValue.forEach(element => firstValue.push(element));    
+        } else {
+            displayValue.forEach(element => secondValue.push(element));
+            displayValue = [];
+            operateValue();
+        }
         changeChosenOperator(multiply);
         return displayValue = [];
     });
     const divideButton = document.querySelector('.divide');
     divideButton.addEventListener('click', () => {
-        displayValue.forEach(element => firstValue.push(element));
+        if (!firstValue.length) {
+            displayValue.forEach(element => firstValue.push(element));    
+        } else {
+            displayValue.forEach(element => secondValue.push(element));
+            displayValue = [];
+            operateValue();
+        }
         changeChosenOperator(divide);
         return displayValue = [];
     });
@@ -133,23 +172,34 @@ let changeChosenOperator = function (operator) {
     return chosenOperator = operator; 
 }
 
-
-let secondValue = []; 
+//Equal Button
 
 const clickEqualButton = function () {
     const display = document.querySelector('.display');
     const equalButton = document.querySelector('.equal');
     equalButton.addEventListener('click', () => {
         displayValue.forEach(element => secondValue.push(element));
-        let num1 = Number(firstValue.join(''));
-        let num2 = Number(secondValue.join('')); 
-        display.textContent = operate(chosenOperator, num1, num2);
+        display.textContent = operate(chosenOperator, firstValue, secondValue);
         resetFirstValue();
         resetSecondValue();
         return displayValue = [];
     });
 }
 clickEqualButton(); 
+
+//Operating complex equations (more than two values)
+
+const operateValue = function () {
+    display(operate(chosenOperator, firstValue, secondValue));
+    if ((firstValue.length) && (secondValue.length)) {
+        resetFirstValue();
+        resetSecondValue();
+        displayValue.forEach(element => firstValue.push(element));
+    }
+    return displayValue = [];
+}
+
+//Reset
 
 const resetFirstValue = function () {
     return firstValue = [];
