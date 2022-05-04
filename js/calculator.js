@@ -21,6 +21,11 @@ const operate = function (operator, num1, num2) {
     num2 = Number(secondValue.join(''));
     return parseFloat(operator(num1, num2).toFixed(6)); 
 }
+
+// Const Values
+
+let maxNumbersInDisplay = 8;
+
 //Values
 
 let displayValue = [];
@@ -106,8 +111,10 @@ const enableDecimal = function () {
 
 let display = function(number) {
     const display = document.querySelector('.display');
-    displayValue.push(number); 
-    display.textContent = displayValue.join('');
+    if (displayValue.length < maxNumbersInDisplay) {   
+        displayValue.push(number); 
+        display.textContent = displayValue.join('');
+    }
 }
 
 const defaultZero = function() {
