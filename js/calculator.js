@@ -108,6 +108,9 @@ let display = function(number) {
     const display = document.querySelector('.display');
     displayValue.push(number); 
     display.textContent = displayValue.join('');
+    if (isOverflown(display)) {
+        display.textContent ="overflow";
+    }
 }
 
 const defaultZero = function() {
@@ -197,6 +200,10 @@ let changeChosenOperator = function (operator) {
 
 //Equal Button
 
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+  }
+
 const clickEqualButton = function () {
     const display = document.querySelector('.display');
     const equalButton = document.querySelector('.equal');
@@ -204,6 +211,9 @@ const clickEqualButton = function () {
         enableDecimal();
         displayValue.forEach(element => secondValue.push(element));
         display.textContent = operate(chosenOperator, firstValue, secondValue);
+        if (isOverflown(display)) {
+            display.textContent ="overflow";
+        }
         resetFirstValue();
         resetSecondValue();
         return displayValue = [];
