@@ -106,8 +106,12 @@ const enableDecimal = function () {
 
 let display = function(number) {
     const display = document.querySelector('.display');
+    if (displayValue.length >= 8) {
+        return
+    } else {
     displayValue.push(number); 
     display.textContent = displayValue.join('');
+    }
 }
 
 const defaultZero = function() {
