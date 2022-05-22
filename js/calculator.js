@@ -120,11 +120,28 @@ const defaultZero = function() {
 }
 defaultZero();
 
+//Backspace Button
+
+const clickBackspaceButton = function() {
+    const display = document.querySelector('.display');
+    const backspaceButton = document.querySelector('.backspace');
+    backspaceButton.addEventListener('click', () => {
+    if (displayValue.length <= 1) {
+        display.textContent = 0;
+        return displayValue = [];
+    } else {
+        displayValue.pop();
+        display.textContent = displayValue.join('');
+    } 
+    })
+}
+clickBackspaceButton();
+
 //Clear Button
 
 const clickClearButton = function() {
     const display = document.querySelector('.display');
-    const clearButton = document.querySelector('.clear')
+    const clearButton = document.querySelector('.clear');
     clearButton.addEventListener('click', () => {
         display.textContent = 0;
         resetFirstValue();
