@@ -19,7 +19,11 @@ const divide = function (num1, num2) {
 const operate = function (operator, num1, num2) {
     num1 = Number(firstValue.join(''));
     num2 = Number(secondValue.join(''));
-    return parseFloat(operator(num1, num2).toFixed(6)); 
+    if (operator(num1, num2) >= 99999){
+        return parseFloat(operator(num1, num2)).toExponential(3);
+    } else {
+    return parseFloat(operator(num1, num2).toFixed(3)); 
+    }
 }
 //Values
 
